@@ -1,0 +1,30 @@
+#include "SevSeg.h" 
+SevSeg S; 
+byte CommonPins[] = {};                
+byte SegPins[] = {2, 3, 4, 5, 6, 7, 8}; 
+int buttonPins[] = {9, 10, 11, 12};    
+int cnt = 0;                            
+
+void setup() {
+  S.begin(COMMON_CATHODE, 1, CommonPins, SegPins, 1); // Initialize 7-segment display
+  
+  for (int i = 0; i < 4; i++) {
+    pinMode(buttonPins[i], INPUT_PULLUP);
+  }
+
+
+void loop() {
+  cnt = 0; 
+
+  for (int i = 0; i < 4; i++) {
+    if (digitalRead(buttonPins[i]) == LOW) { 
+      cnt |= (1 << i); // Set the corresponding bit in the counter
+    }
+  }
+
+  
+  S.setNumber(cnt);
+  S.refreshDisplay();
+  
+  delay(50);
+}
