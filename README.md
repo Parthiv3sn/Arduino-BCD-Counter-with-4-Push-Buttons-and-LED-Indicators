@@ -1,4 +1,4 @@
-# Arduino-BCD-Counter-with-4-Push-Buttons-and-LED-Indicators
+# Arduino BCD Counter with Push-Button Input
 
 An Arduino sketch that reads four buttons as a binary-coded decimal (BCD) input and displays the resulting value (0–15) on a single common-cathode seven-segment display.
 
